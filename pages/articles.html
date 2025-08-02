@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Mon Blog Professionnel</title>
+    <meta name="description" content="Tous mes articles sur mes expériences professionnelles, compétences et découvertes technologiques">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html">Mon Blog Pro</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="articles.html" class="nav-link">Articles</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Mes Articles</h1>
+            <p>Partage d'expériences, découvertes et réflexions professionnelles</p>
+        </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="projet">Projet</button>
+            </div>
+
+            <div class="articles-grid">
+                <!-- Article NBA Data Viewer -->
+                <article class="article-card" data-category="projet">
+                    <div class="article-image">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">15 Janvier 2024</span>
+                            <span class="article-category">Projet</span>
+                        </div>
+                        <h3>Développement d'une application NBA Data Viewer</h3>
+                        <p>Retour d'expérience sur la création d'une application web permettant de visualiser les données de la NBA via l'API balldontlie, utilisant PHP et SQLite.</p>
+                        <div class="article-tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">API</span>
+                            <span class="tag">SQLite</span>
+                            <span class="tag">NBA</span>
+                        </div>
+                        <a href="articles/nba-data-viewer.html" class="read-more">Lire l'article complet</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Filtrage des articles
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const articles = document.querySelectorAll('.article-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Retirer la classe active de tous les boutons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                articles.forEach(article => {
+                    if (filter === 'all' || article.getAttribute('data-category') === filter) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
